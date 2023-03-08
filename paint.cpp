@@ -25,35 +25,35 @@ void colour()
 {
    char msg[80];
    setcolor(15);
-   sprintf(msg, " 1: blue", 3);
-   outtextxy(300, 800, msg);
+   sprintf(msg, " 1: Blue", 3);
+   outtextxy(300, 1020, msg);
    setcolor(15);
-   sprintf(msg, "2: green", 3);
-   outtextxy(400, 800, msg);
+   sprintf(msg, "2: Green", 3);
+   outtextxy(400, 1020, msg);
    setcolor(15);
-   sprintf(msg, "3: cyan", 3);
-   outtextxy(500, 800, msg);
+   sprintf(msg, "3: Cyan", 3);
+   outtextxy(500, 1020, msg);
    setcolor(15);
-   sprintf(msg, "4: red", 3);
-   outtextxy(600, 800, msg);
+   sprintf(msg, "4: Red", 3);
+   outtextxy(600, 1020, msg);
    setcolor(15);
-   sprintf(msg, "5: magenta", 3);
-   outtextxy(700, 800, msg);
+   sprintf(msg, "5: Magenta", 3);
+   outtextxy(700, 1020, msg);
    setcolor(15);
-   sprintf(msg, "6: brown", 3);
-   outtextxy(820, 800, msg);
+   sprintf(msg, "6: Brown", 3);
+   outtextxy(820, 1020, msg);
    setcolor(15);
-   sprintf(msg, "7: LightGray", 3);
-   outtextxy(940, 800, msg);
+   sprintf(msg, "7: Lightgray", 3);
+   outtextxy(940, 1020, msg);
    setcolor(15);
-   sprintf(msg, "8: DarkGray", 3);
-   outtextxy(1060, 800, msg);
+   sprintf(msg, "8: Darkgray", 3);
+   outtextxy(1060, 1020, msg);
    setcolor(15);
-   sprintf(msg, "9: LightBlue", 3);
-   outtextxy(1180, 800, msg);
+   sprintf(msg, "9: Lightblue", 3);
+   outtextxy(1180, 1020, msg);
    setcolor(15);
-   sprintf(msg, "0: LightGreen ", 3);
-   outtextxy(1300, 800, msg);
+   sprintf(msg, "0: Lightgreen ", 3);
+   outtextxy(1300, 1020, msg);
 
    setcolor(15);
    outtextxy(1750,1020,(char*)"Press Esc to Exit");
@@ -62,10 +62,10 @@ void sizze(int width, int height, int size)
 {
    
    setcolor(3);
-   outtextxy(1250,40,(char*)"By Aditya and Rumaan");
+   outtextxy(1750,40,(char*)"By Aditya and Rumaan");
    string s = to_string(size);
-   outtextxy(1250, height / 10, &*s.begin());
-   outtextxy(1210, height / 10, (char *)"Size:");
+   outtextxy(1850, height / 10, &*s.begin());
+   outtextxy(1810, height / 10, (char *)"Size:");
 }
 void size1(int width, int height, int size)
 {
@@ -76,8 +76,8 @@ void size1(int width, int height, int size)
 void size2(int width, int height, int size)
 {
    string s = to_string(size);
-   outtextxy(1250, 40 + height / 10, &*s.begin());
-   outtextxy(1210, 40 + height / 10, (char *)"Y1:");
+   outtextxy(1850, 40 + height / 10, &*s.begin());
+   outtextxy(1810, 40 + height / 10, (char *)"Y1:");
 }
 int main(void)
 {
@@ -88,18 +88,21 @@ int main(void)
    int gd = DETECT, gm, s, v, i, a;
    int size = 30;
    int x1 = 30, y1 = 30;
-   POINT cp;
+   POINT cup;
    int choice = 0;
    int color = 1;
+
    setcolor(color);
    while (1)
    {
+      // setfillstyle(1,15);
+      // floodfill(10,12,1);
       colour();
       shapes();
       sizze(width, height, size);
       size1(width, height, x1);
       size2(width, height, y1);
-      GetCursorPos(&cp);
+      GetCursorPos(&cup);
 
       
       setcolor(color);
@@ -138,7 +141,7 @@ int main(void)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            line(cp.x, cp.y, cp.x + x1, cp.y + y1);
+            line(cup.x, cup.y, cup.x + x1, cup.y + y1);
          }
       }
       else if (GetAsyncKeyState(VK_F2))
@@ -149,7 +152,7 @@ int main(void)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            rectangle(cp.x, cp.y, cp.x + size, cp.y + size);
+            rectangle(cup.x, cup.y, cup.x + size, cup.y + size);
          }
       }
       else if (GetAsyncKeyState(VK_F3))
@@ -160,7 +163,7 @@ int main(void)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            rectangle(cp.x, cp.y, cp.x + x1, cp.y + y1);
+            rectangle(cup.x, cup.y, cup.x + x1, cup.y + y1);
          }
       }
       else if (GetAsyncKeyState(VK_F4))
@@ -171,7 +174,7 @@ int main(void)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            circle(cp.x, cp.y, size);
+            circle(cup.x, cup.y, size);
          }
       }
       else if (GetAsyncKeyState(VK_F5))
@@ -182,7 +185,7 @@ int main(void)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            ellipse(cp.x, cp.y, 0, 360, x1, y1);
+            ellipse(cup.x, cup.y, 0, 360, x1, y1);
          }
       }
       else if (GetAsyncKeyState(VK_F6))
@@ -194,7 +197,7 @@ int main(void)
          if (GetAsyncKeyState(VK_LBUTTON))
          {
             setfillstyle(1,color);
-            floodfill(cp.x,cp.y,4);
+            floodfill(cup.x,cup.y,4);
             delay(100);
          }
       }
@@ -203,12 +206,13 @@ int main(void)
       {
         choice=7;
    }
+   setcolor(color);
       if (choice == 7)
       {
          if (GetAsyncKeyState(VK_LBUTTON))
          {
-            int x2=cp.x;
-            int y2=cp.y;
+            int x2=cup.x;
+            int y2=cup.y;
             int r=size;
             setcolor(0);
             circle(x2,y2,r);
@@ -274,31 +278,7 @@ int main(void)
          cleardevice();
       }
       setcolor(color);
-
-   //    if(GetAsyncKeyState(VK_F11)){
-   //        for (i = 0; i <= 420; i = i + 10) {
-   //      setcolor(RED);
-   //      line(0 + i, 300, 210 + i, 300);
-   //      line(50 + i, 300, 75 + i, 270);
-   //      line(75 + i, 270, 150 + i, 270);
-   //      line(150 + i, 270, 165 + i, 300);
-   //      line(0 + i, 300, 0 + i, 330);
-   //      line(210 + i, 300, 210 + i, 330);
-   //      circle(65 + i, 330, 15);
-   //      circle(65 + i, 330, 2);
-   //      circle(145 + i, 330, 15);
-   //      circle(145 + i, 330, 2);
-   //      line(0 + i, 330, 50 + i, 330);
-   //      line(80 + i, 330, 130 + i, 330);
-   //      line(210 + i, 330, 160 + i, 330);
- 
-   //      delay(100);
-   //      cleardevice();
-   //  }
- 
-   //    }
-   }
-
+      }
    getch();
-
+   return 0;
 }
